@@ -1,0 +1,49 @@
+version: "2.1"
+
+services:  
+  namenode:
+    image: nvtienanh/hadoop-namenode:1.1.0-hadoop2.8-java8
+    hostname: namenode
+    container_name: namenode
+    networks:
+      - spark-net
+    volumes:
+      - ./data/namenode:/hadoop/dfs/name
+    environment:
+      - CLUSTER_NAME=test
+    env_file:
+      - ./hadoop.env
+  datanode1:
+    image: nvtienanh/hadoop-datanode:1.1.0-hadoop2.8-java8
+    hostname: datanode1
+    container_name: datanode1
+    networks:
+      - spark-net
+    volumes:
+      - ./data/datanode1:/hadoop/dfs/data
+    env_file:
+      - ./hadoop.env
+  datanode2:
+    image: nvtienanh/hadoop-datanode:1.1.0-hadoop2.8-java8
+    hostname: datanode2
+    container_name: datanode2
+    networks:
+      - spark-net
+    volumes:
+      - ./data/datanode2:/hadoop/dfs/data
+    env_file:
+      - ./hadoop.env
+  filebrowser:
+    image: nvtienanh/hue:4.3.0
+    hostname: filebrowser
+    container_name: filebrowser
+    networks:
+      - spark-net
+    environment:
+      - NAMENODE_HOST=namenode
+    ports:
+      - "8088:8088"
+networks:
+  spark-net:
+    external:
+      name: spark-net

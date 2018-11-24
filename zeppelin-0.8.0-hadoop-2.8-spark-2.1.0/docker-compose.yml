@@ -1,0 +1,87 @@
+version: "2.1"
+
+services:
+  namenode:
+    image: nvtienanh/hadoop-namenode:1.1.0-hadoop2.8-java8
+    container_name: namenode
+    volumes:
+      - ./data/namenode:/hadoop/dfs/name
+    environment:
+      - CLUSTER_NAME=test
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+    healthcheck:
+      interval: 5s
+      retries: 100
+    networks:
+      - spark-net
+  datanode:
+    image: nvtienanh/hadoop-datanode:1.1.0-hadoop2.8-java8
+    container_name: datanode
+    volumes:
+      - ./data/datanode:/hadoop/dfs/data
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+    depends_on:
+      namenode:
+        condition: service_healthy
+    healthcheck:
+      interval: 5s
+      retries: 100
+    networks:
+      - spark-net
+  spark-master:
+    image: nvtienanh/spark-master:2.1.0-hadoop2.8-hive-java8
+    container_name: spark-master
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+    depends_on:
+      namenode:
+        condition: service_healthy
+      datanode:
+        condition: service_healthy
+    healthcheck:
+      interval: 5s
+      retries: 100
+    networks:
+      - spark-net
+  spark-worker:
+    image: nvtienanh/spark-worker:2.1.0-hadoop2.8-hive-java8
+    environment:
+      - "SPARK_MASTER=spark://spark-master:7077"
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:8020
+    depends_on:
+      spark-master:
+        condition: service_healthy
+    healthcheck:
+      interval: 5s
+      retries: 100
+    networks:
+      - spark-net
+  zeppelin:
+    build: ./zeppelin
+    ports:
+      - 80:8080
+    volumes:
+      - ./zeppelin-0.8.0-hadoop-2.8-spark-2.1.0/notebook:/opt/zeppelin/notebook
+      - ./zeppelin-0.8.0-hadoop-2.8-spark-2.1.0/examples:/opt/sansa-examples
+    environment:
+      CORE_CONF_fs_defaultFS: "hdfs://namenode:8020"
+      SPARK_MASTER: "spark://spark-master:7077"
+      MASTER: "spark://spark-master:7077"
+      SPARK_SUBMIT_OPTIONS: "--jars /opt/sansa-examples/jars/sansa-examples-spark.jar --conf spark.serializer=org.apache.spark.serializer.KryoSerializer --conf spark.kryo.registrator=net.sansa_stack.owl.spark.dataset.UnmodifiableCollectionKryoRegistrator"
+    depends_on:
+      spark-master:
+        condition: service_healthy
+      namenode:
+        condition: service_healthy
+    networks:
+      - spark-net
+
+networks:
+  spark-net:
+    external:
+      name: spark-net

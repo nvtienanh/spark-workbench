@@ -1,0 +1,4 @@
+data/
+hdfs-filebrowser/data
+example/SparkWriteApplication.jar
+.vscode

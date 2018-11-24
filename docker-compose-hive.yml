@@ -1,0 +1,107 @@
+version: '2.1' 
+services:
+  namenode:
+    image: nvtienanh/hadoop-namenode:1.1.0-hadoop2.8-java8
+    container_name: namenode
+    volumes:
+      - ./data/namenode:/hadoop/dfs/name
+    environment:
+      - CLUSTER_NAME=test
+    env_file:
+      - ./hadoop-hive.env
+    ports:
+      - 50070:50070
+    networks:
+      - spark-net
+  datanode:
+    image: nvtienanh/hadoop-datanode:1.1.0-hadoop2.8-java8
+    container_name: datanode
+    depends_on: 
+      - namenode
+    volumes:
+      - ./data/datanode:/hadoop/dfs/data
+    env_file:
+      - ./hadoop-hive.env
+    ports:
+      - 50075:50075
+    networks:
+      - spark-net
+  hive-server:
+    image: nvtienanh/hive:2.3.2-postgresql-metastore
+    container_name: hive-server
+    env_file:
+      - ./hadoop-hive.env
+    environment:
+      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive-metastore/metastore"
+    ports:
+      - "10000:10000"
+    networks:
+      - spark-net
+  hive-metastore:
+    image: nvtienanh/hive:2.3.2-postgresql-metastore
+    container_name: hive-metastore
+    env_file:
+      - ./hadoop-hive.env
+    command: /opt/hive/bin/hive --service metastore
+    ports:
+      - "9083:9083"
+    networks:
+      - spark-net
+  hive-metastore-postgresql:
+    image: nvtienanh/hive-metastore-postgresql:2.3.0
+    container_name: hive-metastore-postgresql
+    networks:
+      - spark-net
+  spark-master:
+    image: nvtienanh/spark-master:2.1.0-hadoop2.8-hive-java8
+    container_name: spark-master
+    ports:
+      - 8080:8080
+      - 7077:7077
+    env_file:
+      - ./hadoop-hive.env
+    networks:
+      - spark-net
+  spark-worker:
+    image: nvtienanh/spark-worker:2.1.0-hadoop2.8-hive-java8
+    container_name: spark-worker
+    depends_on:
+      - spark-master
+    environment:
+      - SPARK_MASTER=spark://spark-master:7077
+    ports:
+      - "8081:8081"
+    env_file:
+      - ./hadoop-hive.env
+    networks:
+      - spark-net
+  spark-notebook:
+    image: nvtienanh/zeppelin:zeppelin-0.8.0-hadoop2.8-spark-2.1.0
+    container_name: spark-notebook
+    ports:
+      - 80:8080
+    volumes:
+      - ./zeppelin-0.8.0-hadoop-2.8-spark-2.1.0/notebook:/opt/zeppelin/notebook
+      - ./zeppelin-0.8.0-hadoop-2.8-spark-2.1.0/examples:/opt/sansa-examples
+    environment:
+      SPARK_MASTER: "spark://spark-master:7077"
+      MASTER: "spark://spark-master:7077"
+      SPARK_SUBMIT_OPTIONS: "--jars /opt/sansa-examples/jars/sansa-examples-spark.jar"
+    env_file:
+      - ./hadoop.env 
+    networks:
+      - spark-net
+  hdfs-filebrowser:
+    image: nvtienanh/hue:4.3.0
+    container_name: hdfs-filebrowser
+    ports:
+      - 8888:8888
+    environment:
+      - NAMENODE_HOST=namenode
+    networks:
+      - spark-net
+  
+networks:
+  spark-net:
+    external:
+      name: spark-net
