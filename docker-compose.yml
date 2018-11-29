@@ -8,7 +8,7 @@ services:
     environment:
       - CLUSTER_NAME=test
     env_file:
-      - ./hadoop.env
+      - ./hadoop-hive.env
     ports:
       - 50070:50070
     healthcheck:
@@ -24,7 +24,9 @@ services:
     volumes:
       - ./data/datanode:/hadoop/dfs/data
     env_file:
-      - ./hadoop.env
+      - ./hadoop-hive.env
+    environment:
+      SERVICE_PRECONDITION: "namenode:50070"
     ports:
       - 50075:50075
     depends_on:
@@ -35,6 +37,37 @@ services:
       retries: 100 
     networks:
       - spark-net
+  hive-server:
+    image: nvtienanh/hive:2.3.2-postgresql-metastore
+    container_name: hive-server
+    env_file:
+      - ./hadoop-hive.env
+    environment:
+      HIVE_CORE_CONF_javax_jdo_option_ConnectionURL: "jdbc:postgresql://hive-metastore/metastore"
+      SERVICE_PRECONDITION: "hive-metastore:9083"
+    ports:
+      - 10000:10000
+    networks:
+      - spark-net
+  hive-metastore:
+    image: nvtienanh/hive:2.3.2-postgresql-metastore
+    container_name: hive-metastore
+    env_file:
+      - ./hadoop-hive.env
+    command: /opt/hive/bin/hive --service metastore
+    environment:
+      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-metastore-postgresql:5432"
+    ports:
+      - 9083:9083
+    networks:
+      - spark-net
+  hive-metastore-postgresql:
+    image: nvtienanh/hive-metastore-postgresql:2.3.0
+    container_name: hive-metastore-postgresql
+    ports:
+      - 5432:5432
+    networks:
+      - spark-net
   spark-master:
     image: nvtienanh/spark-master:2.1.0-hadoop2.8-hive-java8
     container_name: spark-master
@@ -42,7 +75,7 @@ services:
       - 8080:8080
       - 7077:7077
     env_file:
-      - ./hadoop.env
+      - ./hadoop-hive.env
     depends_on:
       namenode:
         condition: service_healthy
@@ -56,12 +89,14 @@ services:
   spark-worker:
     image: nvtienanh/spark-worker:2.1.0-hadoop2.8-hive-java8
     container_name: spark-worker
+    depends_on:
+      - spark-master
     environment:
       - SPARK_MASTER=spark://spark-master:7077
     ports:
       - 8081:8081
     env_file:
-      - ./hadoop.env
+      - ./hadoop-hive.env
     depends_on:
       spark-master:
         condition: service_healthy
@@ -81,16 +116,16 @@ services:
     environment:
       SPARK_MASTER: "spark://spark-master:7077"
       MASTER: "spark://spark-master:7077"
-      SPARK_SUBMIT_OPTIONS: "--jars /opt/sansa-examples/jars/sansa-examples-spark.jar"
+      # SPARK_SUBMIT_OPTIONS: "--jars /opt/sansa-examples/jars/sansa-examples-spark.jar"
     env_file:
-      - ./hadoop.env 
+      - ./hadoop-hive.env
     depends_on:
       spark-master:
         condition: service_healthy
       namenode:
         condition: service_healthy
     networks:
-      - spark-net    
+      - spark-net
   hdfs-filebrowser:
     image: nvtienanh/hue:4.3.0
     container_name: hdfs-filebrowser
@@ -105,7 +140,7 @@ services:
         condition: service_healthy
     networks:
       - spark-net
-  
+
 networks:
   spark-net:
     external:

@@ -1,0 +1,421 @@
+{
+  "paragraphs": [
+    {
+      "text": "%spark.pyspark\ndf \u003d spark.read.csv(\u0027hdfs://namenode:8020/user/tienanh/Linear_Regression/cruise_ship_info.csv\u0027, inferSchema\u003dTrue, header\u003dTrue)\nz.show(df)",
+      "user": "tienanh",
+      "dateUpdated": "2018-11-27 12:59:30.593",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Ship_name": "string",
+                      "Cruise_line": "string",
+                      "Age": "string",
+                      "Tonnage": "string",
+                      "passengers": "string",
+                      "length": "string",
+                      "cabins": "string",
+                      "passenger_density": "string",
+                      "crew": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "Ship_name\tCruise_line\tAge\tTonnage\tpassengers\tlength\tcabins\tpassenger_density\tcrew\nJourney\tAzamara\t6\t30.276999999999997\t6.94\t5.94\t3.55\t42.64\t3.55\nQuest\tAzamara\t6\t30.276999999999997\t6.94\t5.94\t3.55\t42.64\t3.55\nCelebration\tCarnival\t26\t47.262\t14.86\t7.22\t7.43\t31.8\t6.7\nConquest\tCarnival\t11\t110.0\t29.74\t9.53\t14.88\t36.99\t19.1\nDestiny\tCarnival\t17\t101.353\t26.42\t8.92\t13.21\t38.36\t10.0\nEcstasy\tCarnival\t22\t70.367\t20.52\t8.55\t10.2\t34.29\t9.2\nElation\tCarnival\t15\t70.367\t20.52\t8.55\t10.2\t34.29\t9.2\nFantasy\tCarnival\t23\t70.367\t20.56\t8.55\t10.22\t34.23\t9.2\nFascination\tCarnival\t19\t70.367\t20.52\t8.55\t10.2\t34.29\t9.2\nFreedom\tCarnival\t6\t110.23899999999999\t37.0\t9.51\t14.87\t29.79\t11.5\nGlory\tCarnival\t10\t110.0\t29.74\t9.51\t14.87\t36.99\t11.6\nHoliday\tCarnival\t28\t46.052\t14.52\t7.27\t7.26\t31.72\t6.6\nImagination\tCarnival\t18\t70.367\t20.52\t8.55\t10.2\t34.29\t9.2\nInspiration\tCarnival\t17\t70.367\t20.52\t8.55\t10.2\t34.29\t9.2\nLegend\tCarnival\t11\t86.0\t21.24\t9.63\t10.62\t40.49\t9.3\nLiberty*\tCarnival\t8\t110.0\t29.74\t9.51\t14.87\t36.99\t11.6\nMiracle\tCarnival\t9\t88.5\t21.24\t9.63\t10.62\t41.67\t10.3\nParadise\tCarnival\t15\t70.367\t20.52\t8.55\t10.2\t34.29\t9.2\nPride\tCarnival\t12\t88.5\t21.24\t9.63\t11.62\t41.67\t9.3\nSensation\tCarnival\t20\t70.367\t20.52\t8.55\t10.2\t34.29\t9.2\nSpirit\tCarnival\t12\t88.5\t21.24\t9.63\t10.56\t41.67\t10.29\nTriumph\tCarnival\t14\t101.509\t27.58\t8.93\t13.21\t36.81\t10.0\nValor\tCarnival\t9\t110.0\t29.74\t9.52\t14.87\t36.99\t11.6\nVictory\tCarnival\t13\t101.509\t27.58\t8.93\t13.79\t36.81\t11.5\nCentury\tCelebrity\t18\t70.60600000000001\t17.7\t8.15\t8.75\t39.89\t8.58\nConstellation\tCelebrity\t11\t91.0\t20.32\t9.65\t9.75\t44.78\t9.99\nGalaxy\tCelebrity\t17\t77.71300000000001\t18.9\t8.66\t9.35\t41.12\t9.09\nInfinity\tCelebrity\t12\t91.0\t20.32\t9.65\t9.75\t44.78\t9.99\nMercury\tCelebrity\t16\t77.71300000000001\t18.82\t8.66\t9.35\t41.29\t9.09\nMillenium\tCelebrity\t13\t91.0\t20.32\t9.65\t9.75\t44.78\t9.99\nSolstice\tCelebrity\t5\t122.0\t28.5\t10.33\t6.87\t34.57\t6.7\nSummit\tCelebrity\t12\t91.0\t20.32\t9.65\t9.75\t44.78\t9.99\nXpedition\tCelebrity\t12\t2.329\t0.94\t2.96\t0.45\t24.78\t0.6\nZenith\tCelebrity\t21\t47.225\t13.66\t6.82\t6.87\t34.57\t6.7\nAllegra\tCosta\t21\t28.43\t8.08\t6.16\t4.1\t35.19\t4.0\nAtlantica\tCosta\t13\t85.619\t21.14\t9.57\t10.56\t40.5\t9.2\nClassica\tCosta\t22\t52.926\t13.02\t7.18\t6.54\t40.65\t6.17\nEuropa\tCosta\t27\t53.872\t14.94\t7.98\t7.67\t36.06\t6.36\nFortuna\tCosta\t10\t105.0\t27.2\t8.9\t13.56\t38.6\t10.68\nMagica\tCosta\t9\t105.0\t27.2\t8.9\t13.56\t38.6\t10.68\nMarina\tCosta\t23\t25.0\t7.76\t6.22\t3.86\t32.22\t3.85\nMediterranea\tCosta\t10\t86.0\t21.14\t9.6\t10.56\t40.68\t9.2\nRomantica\tCosta\t20\t53.049\t13.44\t7.22\t6.78\t39.47\t6.0\nSerena\tCosta\t6\t112.0\t38.0\t9.51\t15.0\t29.47\t10.9\nVictoria\tCosta\t17\t75.166\t19.28\t8.28\t9.64\t38.99\t7.66\nSerenity\tCrystal\t10\t68.0\t10.8\t7.9\t5.5\t62.96\t6.36\nSymphony\tCrystal\t18\t51.004\t9.4\t7.81\t4.8\t54.26\t5.45\nQueenElizabethII\tCunard\t44\t70.327\t17.91\t9.63\t9.5\t39.27\t9.21\nQueenMary2\tCunard\t10\t151.4\t26.2\t11.32\t11.34\t57.79\t12.53\nQueenVictoria\tCunard\t6\t90.0\t20.0\t9.64\t10.29\t45.0\t9.0\nMagic\tDisney\t15\t83.338\t17.5\t9.64\t8.75\t47.62\t9.45\nWonder\tDisney\t14\t83.0\t17.5\t9.64\t8.75\t47.43\t9.45\nAmsterdam\tHolland_American\t13\t61.0\t13.8\t7.8\t6.88\t44.2\t6.0\nEurodam\tHolland_American\t5\t86.0\t21.04\t9.36\t10.22\t40.87\t8.0\nMaasdam\tHolland_American\t20\t55.451\t12.64\t7.19\t6.32\t43.87\t5.57\nNoordam\tHolland_American\t29\t33.92\t12.14\t7.04\t6.07\t27.94\t5.3\nOosterdam\tHolland_American\t10\t81.76899999999999\t18.48\t9.59\t9.24\t44.25\t8.42\nPrinsendam\tHolland_American\t25\t38.0\t7.49\t6.74\t3.96\t50.73\t4.6\nRotterdam\tHolland_American\t16\t59.652\t13.2\t7.77\t6.6\t45.19\t6.44\nRyndam\tHolland_American\t19\t55.451\t12.66\t7.19\t6.33\t43.8\t5.88\nStatendam\tHolland_American\t20\t55.451\t12.66\t7.19\t6.33\t43.8\t5.88\nVeendam\tHolland_American\t17\t55.451\t12.66\t7.19\t6.33\t43.8\t5.88\nVolendam\tHolland_American\t14\t63.0\t14.4\t7.77\t7.2\t43.75\t5.61\nWesterdam\tHolland_American\t27\t53.872\t14.94\t7.98\t7.47\t36.06\t6.12\nZaandam\tHolland_American\t13\t63.0\t14.4\t7.77\t7.2\t43.75\t5.31\nZuiderdam\tHolland_American\t11\t85.0\t18.48\t9.51\t9.24\t46.0\t8.0\nArmonia\tMSC\t12\t58.6\t15.66\t8.24\t7.83\t37.42\t7.0\nFantasia\tMSC\t5\t133.5\t39.59\t10.93\t16.37\t33.72\t13.13\nLirica\tMSC\t10\t58.825\t15.6\t8.23\t7.65\t37.71\t7.0\nMelody\tMSC\t31\t35.143\t12.5\t6.69\t5.32\t28.11\t5.35\nMusica\tMSC\t7\t89.6\t25.5\t9.61\t12.75\t35.14\t9.87\nOpera\tMSC\t9\t59.058\t17.0\t7.63\t8.5\t34.74\t7.4\nRhapsody\tMSC\t36\t16.852\t9.52\t5.41\t3.83\t17.7\t2.97\nSinfonia\tMSC\t11\t58.6\t15.66\t8.23\t7.83\t37.42\t7.6\nCrown\tNorwegian\t25\t34.25\t10.52\t6.15\t5.26\t32.56\t4.7\nDawn\tNorwegian\t11\t90.0\t22.4\t9.65\t11.2\t40.18\t11.0\nDream\tNorwegian\t21\t50.76\t17.48\t7.54\t8.74\t29.04\t6.14\nGem\tNorwegian\t6\t93.0\t23.94\t9.65\t11.97\t38.85\t11.09\nJewel\tNorwegian\t8\t91.0\t22.44\t9.65\t11.22\t40.55\t11.0\nMajesty\tNorwegian\t21\t38.0\t10.56\t5.67\t5.28\t35.98\t4.38\nPrideofAloha\tNorwegian\t14\t77.104\t20.02\t8.53\t10.01\t38.51\t8.0\nPrideofAmerica\tNorwegian\t9\t81.0\t21.44\t9.21\t10.72\t37.78\t10.0\nSea\tNorwegian\t25\t42.0\t15.04\t7.08\t7.52\t27.93\t6.3\nSpirit\tNorwegian\t15\t75.33800000000001\t19.56\t8.79\t9.83\t38.52\t13.0\nStar\tNorwegian\t40\t28.0\t11.5\t6.74\t4.0\t24.35\t3.8\nSun\tNorwegian\t12\t77.104\t20.02\t8.53\t10.01\t38.51\t9.59\nWind\tNorwegian\t20\t50.76\t17.48\t7.54\t8.74\t29.04\t6.14\nInsignia\tOceania\t15\t30.276999999999997\t6.84\t5.94\t3.42\t44.26\t4.0\nNautica\tOceania\t13\t30.276999999999997\t6.84\t5.94\t3.42\t44.26\t4.0\nRegatta\tOceania\t15\t30.276999999999997\t6.84\t5.94\t3.42\t44.26\t4.0\nMarcoPolo\tOrient\t48\t22.08\t8.26\t5.78\t4.25\t26.73\t3.5\nArcadia\tP\u0026O\t9\t85.0\t19.68\t9.35\t9.84\t43.19\t8.69\nArtemis\tP\u0026O\t29\t45.0\t11.78\t7.54\t5.3\t38.2\t5.2\nAurora\tP\u0026O\t13\t76.0\t18.74\t8.86\t9.39\t40.55\t8.5\nOceana\tP\u0026O\t10\t77.0\t20.16\t8.56\t9.75\t38.19\t9.0\nOriana\tP\u0026O\t18\t69.153\t18.82\t8.53\t9.14\t36.74\t7.94\nVentura\tP\u0026O\t5\t115.0\t35.74\t9.0\t15.32\t32.18\t12.2\nCaribbean\tPrincess\t9\t116.0\t26.0\t9.51\t13.0\t44.62\t11.0\nCoral\tPrincess\t11\t91.62700000000001\t19.74\t9.64\t9.87\t46.42\t9.0\nCrown\tPrincess\t7\t116.0\t31.0\t9.51\t15.57\t37.42\t12.0\nDawn\tPrincess\t16\t77.499\t19.5\t8.56\t10.5\t39.74\t9.0\nDiamond\tPrincess\t9\t113.0\t26.74\t9.51\t13.37\t42.26\t12.38\nEmerald\tPrincess\t6\t113.0\t37.82\t9.51\t15.57\t29.88\t12.0\nGolden\tPrincess\t12\t108.865\t27.58\t9.51\t13.0\t39.47\t11.0\nGrand\tPrincess\t15\t108.806\t26.0\t9.51\t13.0\t41.85\t11.1\nIsland\tPrincess\t10\t91.62700000000001\t19.74\t9.64\t9.87\t46.42\t9.0\nPacific\tPrincess\t14\t30.276999999999997\t6.86\t5.93\t3.44\t44.14\t3.73\nRegal\tPrincess\t22\t69.845\t15.9\t8.03\t7.95\t43.93\t6.96\nRoyal\tPrincess\t29\t44.348\t12.0\t7.54\t6.0\t36.96\t5.2\nSaphire\tPrincess\t9\t113.0\t26.74\t9.51\t13.37\t42.26\t12.38\nSea\tPrincess\t8\t77.499\t19.5\t8.56\t9.75\t39.74\t9.0\nStar\tPrincess\t11\t108.977\t26.02\t9.51\t13.01\t41.88\t12.0\nSun\tPrincess\t18\t77.499\t19.5\t8.56\t9.75\t39.74\t9.0\nTahitian\tPrincess\t14\t30.276999999999997\t6.88\t5.93\t3.44\t44.01\t3.73\nExplorerII\tRegent_Seven_Seas\t27\t12.5\t3.94\t4.36\t0.88\t31.73\t1.46\nMariner\tRegent_Seven_Seas\t12\t50.0\t7.0\t7.09\t3.54\t71.43\t4.45\nNavigator\tRegent_Seven_Seas\t14\t33.0\t4.9\t5.6\t2.45\t67.35\t3.24\nPaulGauguin\tRegent_Seven_Seas\t16\t19.2\t3.2\t5.13\t1.6\t60.0\t2.11\nVoyager\tRegent_Seven_Seas\t10\t46.0\t7.0\t6.7\t1.82\t65.71\t4.47\nAdventure\tRoyal_Caribbean\t12\t138.0\t31.14\t10.2\t15.57\t44.32\t11.85\nBrilliance\tRoyal_Caribbean\t11\t90.09\t25.01\t9.62\t10.5\t36.02\t8.48\nEmpress\tRoyal_Caribbean\t23\t48.563\t20.2\t6.92\t8.0\t24.04\t6.71\nEnchantment\tRoyal_Caribbean\t16\t74.137\t19.5\t9.16\t9.75\t38.02\t7.6\nExplorer\tRoyal_Caribbean\t13\t138.0\t31.14\t10.2\t15.57\t44.32\t11.76\nFreedom\tRoyal_Caribbean\t7\t158.0\t43.7\t11.12\t18.0\t36.16\t13.6\nGrandeur\tRoyal_Caribbean\t17\t74.137\t19.5\t9.16\t9.75\t38.02\t7.6\nIndependence\tRoyal_Caribbean\t5\t160.0\t36.34\t11.12\t18.17\t44.03\t13.6\nJewel\tRoyal_Caribbean\t9\t90.09\t25.01\t9.62\t10.94\t36.02\t8.69\nLegend\tRoyal_Caribbean\t18\t70.0\t18.0\t8.67\t9.0\t38.89\t7.2\nLiberty\tRoyal_Caribbean\t6\t158.0\t43.7\t11.25\t18.0\t36.16\t13.6\nMajesty\tRoyal_Caribbean\t21\t73.941\t27.44\t8.8\t11.75\t26.95\t8.22\nMariner\tRoyal_Caribbean\t10\t138.0\t31.14\t10.2\t15.57\t44.32\t11.85\nMonarch\tRoyal_Caribbean\t22\t73.941\t27.44\t8.8\t11.77\t30.94\t8.22\nNavigator\tRoyal_Caribbean\t11\t138.0\t31.14\t10.2\t15.57\t44.32\t11.85\nOasis\tRoyal_Caribbean\t4\t220.0\t54.0\t11.82\t27.0\t40.74\t21.0\nRadiance\tRoyal_Caribbean\t12\t90.09\t25.01\t9.62\t10.5\t36.02\t8.68\nRhapsody\tRoyal_Caribbean\t16\t78.491\t24.35\t9.15\t10.0\t32.23\t7.65\nSerenade\tRoyal_Caribbean\t10\t90.09\t25.01\t9.62\t10.5\t36.02\t8.58\nSovreign\tRoyal_Caribbean\t25\t73.192\t28.52\t8.8\t11.38\t25.66\t8.08\nSplendour\tRoyal_Caribbean\t17\t70.0\t20.76\t8.67\t9.02\t33.72\t7.2\nVision\tRoyal_Caribbean\t15\t78.491\t24.35\t9.15\t10.0\t32.23\t6.6\nVoyager\tRoyal_Caribbean\t14\t138.0\t31.14\t10.2\t15.57\t44.32\t11.76\nLegend\tSeabourn\t21\t10.0\t2.08\t4.4\t1.04\t48.08\t1.6\nPride\tSeabourn\t27\t10.0\t2.08\t4.4\t1.04\t48.08\t1.6\nSpirit\tSeabourn\t24\t10.0\t2.08\t4.4\t1.04\t48.08\t1.6\nCloud\tSilversea\t19\t16.8\t2.96\t5.14\t1.48\t56.76\t2.1\nShadow\tSilversea\t13\t25.0\t3.82\t5.97\t1.94\t65.45\t2.95\nWhisper\tSilversea\t12\t25.0\t3.88\t5.97\t1.94\t64.43\t2.87\nWind\tSilversea\t19\t16.8\t2.96\t5.14\t1.48\t56.76\t1.97\nAries\tStar\t22\t3.341\t0.66\t2.8\t0.33\t50.62\t0.59\nGemini\tStar\t21\t19.093\t8.0\t5.37\t4.0\t23.87\t4.7\nLibra\tStar\t12\t42.0\t14.8\t7.13\t7.4\t28.38\t6.8\nPisces\tStar\t24\t40.053000000000004\t12.87\t5.79\t7.76\t31.12\t7.5\nTaurus\tStar\t22\t3.341\t0.66\t2.79\t0.33\t50.62\t0.59\nVirgo\tStar\t14\t76.8\t19.6\t8.79\t9.67\t39.18\t12.0\nSpirit\tWindstar\t25\t5.35\t1.58\t4.4\t0.74\t33.86\t0.88\nStar\tWindstar\t27\t5.35\t1.67\t4.4\t0.74\t32.04\t0.88\nSurf\tWindstar\t23\t14.745\t3.08\t6.17\t1.56\t47.87\t1.8\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://172.18.0.10:4040/jobs/job?id\u003d4",
+            "http://172.18.0.10:4040/jobs/job?id\u003d5",
+            "http://172.18.0.10:4040/jobs/job?id\u003d6",
+            "http://172.18.0.10:4040/jobs/job?id\u003d7"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1543323178806_1474735872",
+      "id": "20181127-125258_714361157",
+      "dateCreated": "2018-11-27 12:52:58.806",
+      "dateStarted": "2018-11-27 12:59:19.852",
+      "dateFinished": "2018-11-27 12:59:20.563",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark.pyspark\nfrom pyspark.ml.feature import StringIndexer\nindexer \u003d StringIndexer(inputCol\u003d\u0027Cruise_line\u0027, outputCol\u003d\u0027cruise_cat\u0027)\nindexed \u003d indexer.fit(df).transform(df)\nz.show(indexed)",
+      "user": "tienanh",
+      "dateUpdated": "2018-11-27 13:09:20.138",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Ship_name": "string",
+                      "Cruise_line": "string",
+                      "Age": "string",
+                      "Tonnage": "string",
+                      "passengers": "string",
+                      "length": "string",
+                      "cabins": "string",
+                      "passenger_density": "string",
+                      "crew": "string",
+                      "cruise_cat": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "Ship_name\tCruise_line\tAge\tTonnage\tpassengers\tlength\tcabins\tpassenger_density\tcrew\tcruise_cat\nJourney\tAzamara\t6\t30.276999999999997\t6.94\t5.94\t3.55\t42.64\t3.55\t16.0\nQuest\tAzamara\t6\t30.276999999999997\t6.94\t5.94\t3.55\t42.64\t3.55\t16.0\nCelebration\tCarnival\t26\t47.262\t14.86\t7.22\t7.43\t31.8\t6.7\t1.0\nConquest\tCarnival\t11\t110.0\t29.74\t9.53\t14.88\t36.99\t19.1\t1.0\nDestiny\tCarnival\t17\t101.353\t26.42\t8.92\t13.21\t38.36\t10.0\t1.0\nEcstasy\tCarnival\t22\t70.367\t20.52\t8.55\t10.2\t34.29\t9.2\t1.0\nElation\tCarnival\t15\t70.367\t20.52\t8.55\t10.2\t34.29\t9.2\t1.0\nFantasy\tCarnival\t23\t70.367\t20.56\t8.55\t10.22\t34.23\t9.2\t1.0\nFascination\tCarnival\t19\t70.367\t20.52\t8.55\t10.2\t34.29\t9.2\t1.0\nFreedom\tCarnival\t6\t110.23899999999999\t37.0\t9.51\t14.87\t29.79\t11.5\t1.0\nGlory\tCarnival\t10\t110.0\t29.74\t9.51\t14.87\t36.99\t11.6\t1.0\nHoliday\tCarnival\t28\t46.052\t14.52\t7.27\t7.26\t31.72\t6.6\t1.0\nImagination\tCarnival\t18\t70.367\t20.52\t8.55\t10.2\t34.29\t9.2\t1.0\nInspiration\tCarnival\t17\t70.367\t20.52\t8.55\t10.2\t34.29\t9.2\t1.0\nLegend\tCarnival\t11\t86.0\t21.24\t9.63\t10.62\t40.49\t9.3\t1.0\nLiberty*\tCarnival\t8\t110.0\t29.74\t9.51\t14.87\t36.99\t11.6\t1.0\nMiracle\tCarnival\t9\t88.5\t21.24\t9.63\t10.62\t41.67\t10.3\t1.0\nParadise\tCarnival\t15\t70.367\t20.52\t8.55\t10.2\t34.29\t9.2\t1.0\nPride\tCarnival\t12\t88.5\t21.24\t9.63\t11.62\t41.67\t9.3\t1.0\nSensation\tCarnival\t20\t70.367\t20.52\t8.55\t10.2\t34.29\t9.2\t1.0\nSpirit\tCarnival\t12\t88.5\t21.24\t9.63\t10.56\t41.67\t10.29\t1.0\nTriumph\tCarnival\t14\t101.509\t27.58\t8.93\t13.21\t36.81\t10.0\t1.0\nValor\tCarnival\t9\t110.0\t29.74\t9.52\t14.87\t36.99\t11.6\t1.0\nVictory\tCarnival\t13\t101.509\t27.58\t8.93\t13.79\t36.81\t11.5\t1.0\nCentury\tCelebrity\t18\t70.60600000000001\t17.7\t8.15\t8.75\t39.89\t8.58\t6.0\nConstellation\tCelebrity\t11\t91.0\t20.32\t9.65\t9.75\t44.78\t9.99\t6.0\nGalaxy\tCelebrity\t17\t77.71300000000001\t18.9\t8.66\t9.35\t41.12\t9.09\t6.0\nInfinity\tCelebrity\t12\t91.0\t20.32\t9.65\t9.75\t44.78\t9.99\t6.0\nMercury\tCelebrity\t16\t77.71300000000001\t18.82\t8.66\t9.35\t41.29\t9.09\t6.0\nMillenium\tCelebrity\t13\t91.0\t20.32\t9.65\t9.75\t44.78\t9.99\t6.0\nSolstice\tCelebrity\t5\t122.0\t28.5\t10.33\t6.87\t34.57\t6.7\t6.0\nSummit\tCelebrity\t12\t91.0\t20.32\t9.65\t9.75\t44.78\t9.99\t6.0\nXpedition\tCelebrity\t12\t2.329\t0.94\t2.96\t0.45\t24.78\t0.6\t6.0\nZenith\tCelebrity\t21\t47.225\t13.66\t6.82\t6.87\t34.57\t6.7\t6.0\nAllegra\tCosta\t21\t28.43\t8.08\t6.16\t4.1\t35.19\t4.0\t5.0\nAtlantica\tCosta\t13\t85.619\t21.14\t9.57\t10.56\t40.5\t9.2\t5.0\nClassica\tCosta\t22\t52.926\t13.02\t7.18\t6.54\t40.65\t6.17\t5.0\nEuropa\tCosta\t27\t53.872\t14.94\t7.98\t7.67\t36.06\t6.36\t5.0\nFortuna\tCosta\t10\t105.0\t27.2\t8.9\t13.56\t38.6\t10.68\t5.0\nMagica\tCosta\t9\t105.0\t27.2\t8.9\t13.56\t38.6\t10.68\t5.0\nMarina\tCosta\t23\t25.0\t7.76\t6.22\t3.86\t32.22\t3.85\t5.0\nMediterranea\tCosta\t10\t86.0\t21.14\t9.6\t10.56\t40.68\t9.2\t5.0\nRomantica\tCosta\t20\t53.049\t13.44\t7.22\t6.78\t39.47\t6.0\t5.0\nSerena\tCosta\t6\t112.0\t38.0\t9.51\t15.0\t29.47\t10.9\t5.0\nVictoria\tCosta\t17\t75.166\t19.28\t8.28\t9.64\t38.99\t7.66\t5.0\nSerenity\tCrystal\t10\t68.0\t10.8\t7.9\t5.5\t62.96\t6.36\t18.0\nSymphony\tCrystal\t18\t51.004\t9.4\t7.81\t4.8\t54.26\t5.45\t18.0\nQueenElizabethII\tCunard\t44\t70.327\t17.91\t9.63\t9.5\t39.27\t9.21\t15.0\nQueenMary2\tCunard\t10\t151.4\t26.2\t11.32\t11.34\t57.79\t12.53\t15.0\nQueenVictoria\tCunard\t6\t90.0\t20.0\t9.64\t10.29\t45.0\t9.0\t15.0\nMagic\tDisney\t15\t83.338\t17.5\t9.64\t8.75\t47.62\t9.45\t17.0\nWonder\tDisney\t14\t83.0\t17.5\t9.64\t8.75\t47.43\t9.45\t17.0\nAmsterdam\tHolland_American\t13\t61.0\t13.8\t7.8\t6.88\t44.2\t6.0\t3.0\nEurodam\tHolland_American\t5\t86.0\t21.04\t9.36\t10.22\t40.87\t8.0\t3.0\nMaasdam\tHolland_American\t20\t55.451\t12.64\t7.19\t6.32\t43.87\t5.57\t3.0\nNoordam\tHolland_American\t29\t33.92\t12.14\t7.04\t6.07\t27.94\t5.3\t3.0\nOosterdam\tHolland_American\t10\t81.76899999999999\t18.48\t9.59\t9.24\t44.25\t8.42\t3.0\nPrinsendam\tHolland_American\t25\t38.0\t7.49\t6.74\t3.96\t50.73\t4.6\t3.0\nRotterdam\tHolland_American\t16\t59.652\t13.2\t7.77\t6.6\t45.19\t6.44\t3.0\nRyndam\tHolland_American\t19\t55.451\t12.66\t7.19\t6.33\t43.8\t5.88\t3.0\nStatendam\tHolland_American\t20\t55.451\t12.66\t7.19\t6.33\t43.8\t5.88\t3.0\nVeendam\tHolland_American\t17\t55.451\t12.66\t7.19\t6.33\t43.8\t5.88\t3.0\nVolendam\tHolland_American\t14\t63.0\t14.4\t7.77\t7.2\t43.75\t5.61\t3.0\nWesterdam\tHolland_American\t27\t53.872\t14.94\t7.98\t7.47\t36.06\t6.12\t3.0\nZaandam\tHolland_American\t13\t63.0\t14.4\t7.77\t7.2\t43.75\t5.31\t3.0\nZuiderdam\tHolland_American\t11\t85.0\t18.48\t9.51\t9.24\t46.0\t8.0\t3.0\nArmonia\tMSC\t12\t58.6\t15.66\t8.24\t7.83\t37.42\t7.0\t7.0\nFantasia\tMSC\t5\t133.5\t39.59\t10.93\t16.37\t33.72\t13.13\t7.0\nLirica\tMSC\t10\t58.825\t15.6\t8.23\t7.65\t37.71\t7.0\t7.0\nMelody\tMSC\t31\t35.143\t12.5\t6.69\t5.32\t28.11\t5.35\t7.0\nMusica\tMSC\t7\t89.6\t25.5\t9.61\t12.75\t35.14\t9.87\t7.0\nOpera\tMSC\t9\t59.058\t17.0\t7.63\t8.5\t34.74\t7.4\t7.0\nRhapsody\tMSC\t36\t16.852\t9.52\t5.41\t3.83\t17.7\t2.97\t7.0\nSinfonia\tMSC\t11\t58.6\t15.66\t8.23\t7.83\t37.42\t7.6\t7.0\nCrown\tNorwegian\t25\t34.25\t10.52\t6.15\t5.26\t32.56\t4.7\t4.0\nDawn\tNorwegian\t11\t90.0\t22.4\t9.65\t11.2\t40.18\t11.0\t4.0\nDream\tNorwegian\t21\t50.76\t17.48\t7.54\t8.74\t29.04\t6.14\t4.0\nGem\tNorwegian\t6\t93.0\t23.94\t9.65\t11.97\t38.85\t11.09\t4.0\nJewel\tNorwegian\t8\t91.0\t22.44\t9.65\t11.22\t40.55\t11.0\t4.0\nMajesty\tNorwegian\t21\t38.0\t10.56\t5.67\t5.28\t35.98\t4.38\t4.0\nPrideofAloha\tNorwegian\t14\t77.104\t20.02\t8.53\t10.01\t38.51\t8.0\t4.0\nPrideofAmerica\tNorwegian\t9\t81.0\t21.44\t9.21\t10.72\t37.78\t10.0\t4.0\nSea\tNorwegian\t25\t42.0\t15.04\t7.08\t7.52\t27.93\t6.3\t4.0\nSpirit\tNorwegian\t15\t75.33800000000001\t19.56\t8.79\t9.83\t38.52\t13.0\t4.0\nStar\tNorwegian\t40\t28.0\t11.5\t6.74\t4.0\t24.35\t3.8\t4.0\nSun\tNorwegian\t12\t77.104\t20.02\t8.53\t10.01\t38.51\t9.59\t4.0\nWind\tNorwegian\t20\t50.76\t17.48\t7.54\t8.74\t29.04\t6.14\t4.0\nInsignia\tOceania\t15\t30.276999999999997\t6.84\t5.94\t3.42\t44.26\t4.0\t12.0\nNautica\tOceania\t13\t30.276999999999997\t6.84\t5.94\t3.42\t44.26\t4.0\t12.0\nRegatta\tOceania\t15\t30.276999999999997\t6.84\t5.94\t3.42\t44.26\t4.0\t12.0\nMarcoPolo\tOrient\t48\t22.08\t8.26\t5.78\t4.25\t26.73\t3.5\t19.0\nArcadia\tP\u0026O\t9\t85.0\t19.68\t9.35\t9.84\t43.19\t8.69\t9.0\nArtemis\tP\u0026O\t29\t45.0\t11.78\t7.54\t5.3\t38.2\t5.2\t9.0\nAurora\tP\u0026O\t13\t76.0\t18.74\t8.86\t9.39\t40.55\t8.5\t9.0\nOceana\tP\u0026O\t10\t77.0\t20.16\t8.56\t9.75\t38.19\t9.0\t9.0\nOriana\tP\u0026O\t18\t69.153\t18.82\t8.53\t9.14\t36.74\t7.94\t9.0\nVentura\tP\u0026O\t5\t115.0\t35.74\t9.0\t15.32\t32.18\t12.2\t9.0\nCaribbean\tPrincess\t9\t116.0\t26.0\t9.51\t13.0\t44.62\t11.0\t2.0\nCoral\tPrincess\t11\t91.62700000000001\t19.74\t9.64\t9.87\t46.42\t9.0\t2.0\nCrown\tPrincess\t7\t116.0\t31.0\t9.51\t15.57\t37.42\t12.0\t2.0\nDawn\tPrincess\t16\t77.499\t19.5\t8.56\t10.5\t39.74\t9.0\t2.0\nDiamond\tPrincess\t9\t113.0\t26.74\t9.51\t13.37\t42.26\t12.38\t2.0\nEmerald\tPrincess\t6\t113.0\t37.82\t9.51\t15.57\t29.88\t12.0\t2.0\nGolden\tPrincess\t12\t108.865\t27.58\t9.51\t13.0\t39.47\t11.0\t2.0\nGrand\tPrincess\t15\t108.806\t26.0\t9.51\t13.0\t41.85\t11.1\t2.0\nIsland\tPrincess\t10\t91.62700000000001\t19.74\t9.64\t9.87\t46.42\t9.0\t2.0\nPacific\tPrincess\t14\t30.276999999999997\t6.86\t5.93\t3.44\t44.14\t3.73\t2.0\nRegal\tPrincess\t22\t69.845\t15.9\t8.03\t7.95\t43.93\t6.96\t2.0\nRoyal\tPrincess\t29\t44.348\t12.0\t7.54\t6.0\t36.96\t5.2\t2.0\nSaphire\tPrincess\t9\t113.0\t26.74\t9.51\t13.37\t42.26\t12.38\t2.0\nSea\tPrincess\t8\t77.499\t19.5\t8.56\t9.75\t39.74\t9.0\t2.0\nStar\tPrincess\t11\t108.977\t26.02\t9.51\t13.01\t41.88\t12.0\t2.0\nSun\tPrincess\t18\t77.499\t19.5\t8.56\t9.75\t39.74\t9.0\t2.0\nTahitian\tPrincess\t14\t30.276999999999997\t6.88\t5.93\t3.44\t44.01\t3.73\t2.0\nExplorerII\tRegent_Seven_Seas\t27\t12.5\t3.94\t4.36\t0.88\t31.73\t1.46\t10.0\nMariner\tRegent_Seven_Seas\t12\t50.0\t7.0\t7.09\t3.54\t71.43\t4.45\t10.0\nNavigator\tRegent_Seven_Seas\t14\t33.0\t4.9\t5.6\t2.45\t67.35\t3.24\t10.0\nPaulGauguin\tRegent_Seven_Seas\t16\t19.2\t3.2\t5.13\t1.6\t60.0\t2.11\t10.0\nVoyager\tRegent_Seven_Seas\t10\t46.0\t7.0\t6.7\t1.82\t65.71\t4.47\t10.0\nAdventure\tRoyal_Caribbean\t12\t138.0\t31.14\t10.2\t15.57\t44.32\t11.85\t0.0\nBrilliance\tRoyal_Caribbean\t11\t90.09\t25.01\t9.62\t10.5\t36.02\t8.48\t0.0\nEmpress\tRoyal_Caribbean\t23\t48.563\t20.2\t6.92\t8.0\t24.04\t6.71\t0.0\nEnchantment\tRoyal_Caribbean\t16\t74.137\t19.5\t9.16\t9.75\t38.02\t7.6\t0.0\nExplorer\tRoyal_Caribbean\t13\t138.0\t31.14\t10.2\t15.57\t44.32\t11.76\t0.0\nFreedom\tRoyal_Caribbean\t7\t158.0\t43.7\t11.12\t18.0\t36.16\t13.6\t0.0\nGrandeur\tRoyal_Caribbean\t17\t74.137\t19.5\t9.16\t9.75\t38.02\t7.6\t0.0\nIndependence\tRoyal_Caribbean\t5\t160.0\t36.34\t11.12\t18.17\t44.03\t13.6\t0.0\nJewel\tRoyal_Caribbean\t9\t90.09\t25.01\t9.62\t10.94\t36.02\t8.69\t0.0\nLegend\tRoyal_Caribbean\t18\t70.0\t18.0\t8.67\t9.0\t38.89\t7.2\t0.0\nLiberty\tRoyal_Caribbean\t6\t158.0\t43.7\t11.25\t18.0\t36.16\t13.6\t0.0\nMajesty\tRoyal_Caribbean\t21\t73.941\t27.44\t8.8\t11.75\t26.95\t8.22\t0.0\nMariner\tRoyal_Caribbean\t10\t138.0\t31.14\t10.2\t15.57\t44.32\t11.85\t0.0\nMonarch\tRoyal_Caribbean\t22\t73.941\t27.44\t8.8\t11.77\t30.94\t8.22\t0.0\nNavigator\tRoyal_Caribbean\t11\t138.0\t31.14\t10.2\t15.57\t44.32\t11.85\t0.0\nOasis\tRoyal_Caribbean\t4\t220.0\t54.0\t11.82\t27.0\t40.74\t21.0\t0.0\nRadiance\tRoyal_Caribbean\t12\t90.09\t25.01\t9.62\t10.5\t36.02\t8.68\t0.0\nRhapsody\tRoyal_Caribbean\t16\t78.491\t24.35\t9.15\t10.0\t32.23\t7.65\t0.0\nSerenade\tRoyal_Caribbean\t10\t90.09\t25.01\t9.62\t10.5\t36.02\t8.58\t0.0\nSovreign\tRoyal_Caribbean\t25\t73.192\t28.52\t8.8\t11.38\t25.66\t8.08\t0.0\nSplendour\tRoyal_Caribbean\t17\t70.0\t20.76\t8.67\t9.02\t33.72\t7.2\t0.0\nVision\tRoyal_Caribbean\t15\t78.491\t24.35\t9.15\t10.0\t32.23\t6.6\t0.0\nVoyager\tRoyal_Caribbean\t14\t138.0\t31.14\t10.2\t15.57\t44.32\t11.76\t0.0\nLegend\tSeabourn\t21\t10.0\t2.08\t4.4\t1.04\t48.08\t1.6\t13.0\nPride\tSeabourn\t27\t10.0\t2.08\t4.4\t1.04\t48.08\t1.6\t13.0\nSpirit\tSeabourn\t24\t10.0\t2.08\t4.4\t1.04\t48.08\t1.6\t13.0\nCloud\tSilversea\t19\t16.8\t2.96\t5.14\t1.48\t56.76\t2.1\t11.0\nShadow\tSilversea\t13\t25.0\t3.82\t5.97\t1.94\t65.45\t2.95\t11.0\nWhisper\tSilversea\t12\t25.0\t3.88\t5.97\t1.94\t64.43\t2.87\t11.0\nWind\tSilversea\t19\t16.8\t2.96\t5.14\t1.48\t56.76\t1.97\t11.0\nAries\tStar\t22\t3.341\t0.66\t2.8\t0.33\t50.62\t0.59\t8.0\nGemini\tStar\t21\t19.093\t8.0\t5.37\t4.0\t23.87\t4.7\t8.0\nLibra\tStar\t12\t42.0\t14.8\t7.13\t7.4\t28.38\t6.8\t8.0\nPisces\tStar\t24\t40.053000000000004\t12.87\t5.79\t7.76\t31.12\t7.5\t8.0\nTaurus\tStar\t22\t3.341\t0.66\t2.79\t0.33\t50.62\t0.59\t8.0\nVirgo\tStar\t14\t76.8\t19.6\t8.79\t9.67\t39.18\t12.0\t8.0\nSpirit\tWindstar\t25\t5.35\t1.58\t4.4\t0.74\t33.86\t0.88\t14.0\nStar\tWindstar\t27\t5.35\t1.67\t4.4\t0.74\t32.04\t0.88\t14.0\nSurf\tWindstar\t23\t14.745\t3.08\t6.17\t1.56\t47.87\t1.8\t14.0\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://172.18.0.10:4040/jobs/job?id\u003d8",
+            "http://172.18.0.10:4040/jobs/job?id\u003d9"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1543323487170_1913415031",
+      "id": "20181127-125807_1281218449",
+      "dateCreated": "2018-11-27 12:58:07.170",
+      "dateStarted": "2018-11-27 13:09:16.666",
+      "dateFinished": "2018-11-27 13:09:19.112",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark.pyspark\nfrom pyspark.ml.linalg import Vectors\nfrom pyspark.ml.feature import VectorAssembler\nindexed.columns",
+      "user": "tienanh",
+      "dateUpdated": "2018-11-27 13:14:32.015",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "[\u0027Ship_name\u0027, \u0027Cruise_line\u0027, \u0027Age\u0027, \u0027Tonnage\u0027, \u0027passengers\u0027, \u0027length\u0027, \u0027cabins\u0027, \u0027passenger_density\u0027, \u0027crew\u0027, \u0027cruise_cat\u0027]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1543324149238_-1669797620",
+      "id": "20181127-130909_2105858868",
+      "dateCreated": "2018-11-27 13:09:09.238",
+      "dateStarted": "2018-11-27 13:14:32.042",
+      "dateFinished": "2018-11-27 13:14:32.144",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark.pyspark\nassembler \u003d VectorAssembler(inputCols\u003d[\u0027Age\u0027, \u0027Tonnage\u0027, \u0027passengers\u0027, \u0027length\u0027, \u0027cabins\u0027, \u0027passenger_density\u0027, \u0027cruise_cat\u0027], outputCol\u003d\u0027features\u0027)\noutput \u003d assembler.transform(indexed)\nz.show(output.select([\u0027features\u0027, \u0027crew\u0027]))",
+      "user": "tienanh",
+      "dateUpdated": "2018-11-27 13:18:41.848",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "features": "string",
+                      "crew": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "features\tcrew\n[6.0,30.276999999999997,6.94,5.94,3.55,42.64,16.0]\t3.55\n[6.0,30.276999999999997,6.94,5.94,3.55,42.64,16.0]\t3.55\n[26.0,47.262,14.86,7.22,7.43,31.8,1.0]\t6.7\n[11.0,110.0,29.74,9.53,14.88,36.99,1.0]\t19.1\n[17.0,101.353,26.42,8.92,13.21,38.36,1.0]\t10.0\n[22.0,70.367,20.52,8.55,10.2,34.29,1.0]\t9.2\n[15.0,70.367,20.52,8.55,10.2,34.29,1.0]\t9.2\n[23.0,70.367,20.56,8.55,10.22,34.23,1.0]\t9.2\n[19.0,70.367,20.52,8.55,10.2,34.29,1.0]\t9.2\n[6.0,110.23899999999999,37.0,9.51,14.87,29.79,1.0]\t11.5\n[10.0,110.0,29.74,9.51,14.87,36.99,1.0]\t11.6\n[28.0,46.052,14.52,7.27,7.26,31.72,1.0]\t6.6\n[18.0,70.367,20.52,8.55,10.2,34.29,1.0]\t9.2\n[17.0,70.367,20.52,8.55,10.2,34.29,1.0]\t9.2\n[11.0,86.0,21.24,9.63,10.62,40.49,1.0]\t9.3\n[8.0,110.0,29.74,9.51,14.87,36.99,1.0]\t11.6\n[9.0,88.5,21.24,9.63,10.62,41.67,1.0]\t10.3\n[15.0,70.367,20.52,8.55,10.2,34.29,1.0]\t9.2\n[12.0,88.5,21.24,9.63,11.62,41.67,1.0]\t9.3\n[20.0,70.367,20.52,8.55,10.2,34.29,1.0]\t9.2\n[12.0,88.5,21.24,9.63,10.56,41.67,1.0]\t10.29\n[14.0,101.509,27.58,8.93,13.21,36.81,1.0]\t10.0\n[9.0,110.0,29.74,9.52,14.87,36.99,1.0]\t11.6\n[13.0,101.509,27.58,8.93,13.79,36.81,1.0]\t11.5\n[18.0,70.60600000000001,17.7,8.15,8.75,39.89,6.0]\t8.58\n[11.0,91.0,20.32,9.65,9.75,44.78,6.0]\t9.99\n[17.0,77.71300000000001,18.9,8.66,9.35,41.12,6.0]\t9.09\n[12.0,91.0,20.32,9.65,9.75,44.78,6.0]\t9.99\n[16.0,77.71300000000001,18.82,8.66,9.35,41.29,6.0]\t9.09\n[13.0,91.0,20.32,9.65,9.75,44.78,6.0]\t9.99\n[5.0,122.0,28.5,10.33,6.87,34.57,6.0]\t6.7\n[12.0,91.0,20.32,9.65,9.75,44.78,6.0]\t9.99\n[12.0,2.329,0.94,2.96,0.45,24.78,6.0]\t0.6\n[21.0,47.225,13.66,6.82,6.87,34.57,6.0]\t6.7\n[21.0,28.43,8.08,6.16,4.1,35.19,5.0]\t4.0\n[13.0,85.619,21.14,9.57,10.56,40.5,5.0]\t9.2\n[22.0,52.926,13.02,7.18,6.54,40.65,5.0]\t6.17\n[27.0,53.872,14.94,7.98,7.67,36.06,5.0]\t6.36\n[10.0,105.0,27.2,8.9,13.56,38.6,5.0]\t10.68\n[9.0,105.0,27.2,8.9,13.56,38.6,5.0]\t10.68\n[23.0,25.0,7.76,6.22,3.86,32.22,5.0]\t3.85\n[10.0,86.0,21.14,9.6,10.56,40.68,5.0]\t9.2\n[20.0,53.049,13.44,7.22,6.78,39.47,5.0]\t6.0\n[6.0,112.0,38.0,9.51,15.0,29.47,5.0]\t10.9\n[17.0,75.166,19.28,8.28,9.64,38.99,5.0]\t7.66\n[10.0,68.0,10.8,7.9,5.5,62.96,18.0]\t6.36\n[18.0,51.004,9.4,7.81,4.8,54.26,18.0]\t5.45\n[44.0,70.327,17.91,9.63,9.5,39.27,15.0]\t9.21\n[10.0,151.4,26.2,11.32,11.34,57.79,15.0]\t12.53\n[6.0,90.0,20.0,9.64,10.29,45.0,15.0]\t9.0\n[15.0,83.338,17.5,9.64,8.75,47.62,17.0]\t9.45\n[14.0,83.0,17.5,9.64,8.75,47.43,17.0]\t9.45\n[13.0,61.0,13.8,7.8,6.88,44.2,3.0]\t6.0\n[5.0,86.0,21.04,9.36,10.22,40.87,3.0]\t8.0\n[20.0,55.451,12.64,7.19,6.32,43.87,3.0]\t5.57\n[29.0,33.92,12.14,7.04,6.07,27.94,3.0]\t5.3\n[10.0,81.76899999999999,18.48,9.59,9.24,44.25,3.0]\t8.42\n[25.0,38.0,7.49,6.74,3.96,50.73,3.0]\t4.6\n[16.0,59.652,13.2,7.77,6.6,45.19,3.0]\t6.44\n[19.0,55.451,12.66,7.19,6.33,43.8,3.0]\t5.88\n[20.0,55.451,12.66,7.19,6.33,43.8,3.0]\t5.88\n[17.0,55.451,12.66,7.19,6.33,43.8,3.0]\t5.88\n[14.0,63.0,14.4,7.77,7.2,43.75,3.0]\t5.61\n[27.0,53.872,14.94,7.98,7.47,36.06,3.0]\t6.12\n[13.0,63.0,14.4,7.77,7.2,43.75,3.0]\t5.31\n[11.0,85.0,18.48,9.51,9.24,46.0,3.0]\t8.0\n[12.0,58.6,15.66,8.24,7.83,37.42,7.0]\t7.0\n[5.0,133.5,39.59,10.93,16.37,33.72,7.0]\t13.13\n[10.0,58.825,15.6,8.23,7.65,37.71,7.0]\t7.0\n[31.0,35.143,12.5,6.69,5.32,28.11,7.0]\t5.35\n[7.0,89.6,25.5,9.61,12.75,35.14,7.0]\t9.87\n[9.0,59.058,17.0,7.63,8.5,34.74,7.0]\t7.4\n[36.0,16.852,9.52,5.41,3.83,17.7,7.0]\t2.97\n[11.0,58.6,15.66,8.23,7.83,37.42,7.0]\t7.6\n[25.0,34.25,10.52,6.15,5.26,32.56,4.0]\t4.7\n[11.0,90.0,22.4,9.65,11.2,40.18,4.0]\t11.0\n[21.0,50.76,17.48,7.54,8.74,29.04,4.0]\t6.14\n[6.0,93.0,23.94,9.65,11.97,38.85,4.0]\t11.09\n[8.0,91.0,22.44,9.65,11.22,40.55,4.0]\t11.0\n[21.0,38.0,10.56,5.67,5.28,35.98,4.0]\t4.38\n[14.0,77.104,20.02,8.53,10.01,38.51,4.0]\t8.0\n[9.0,81.0,21.44,9.21,10.72,37.78,4.0]\t10.0\n[25.0,42.0,15.04,7.08,7.52,27.93,4.0]\t6.3\n[15.0,75.33800000000001,19.56,8.79,9.83,38.52,4.0]\t13.0\n[40.0,28.0,11.5,6.74,4.0,24.35,4.0]\t3.8\n[12.0,77.104,20.02,8.53,10.01,38.51,4.0]\t9.59\n[20.0,50.76,17.48,7.54,8.74,29.04,4.0]\t6.14\n[15.0,30.276999999999997,6.84,5.94,3.42,44.26,12.0]\t4.0\n[13.0,30.276999999999997,6.84,5.94,3.42,44.26,12.0]\t4.0\n[15.0,30.276999999999997,6.84,5.94,3.42,44.26,12.0]\t4.0\n[48.0,22.08,8.26,5.78,4.25,26.73,19.0]\t3.5\n[9.0,85.0,19.68,9.35,9.84,43.19,9.0]\t8.69\n[29.0,45.0,11.78,7.54,5.3,38.2,9.0]\t5.2\n[13.0,76.0,18.74,8.86,9.39,40.55,9.0]\t8.5\n[10.0,77.0,20.16,8.56,9.75,38.19,9.0]\t9.0\n[18.0,69.153,18.82,8.53,9.14,36.74,9.0]\t7.94\n[5.0,115.0,35.74,9.0,15.32,32.18,9.0]\t12.2\n[9.0,116.0,26.0,9.51,13.0,44.62,2.0]\t11.0\n[11.0,91.62700000000001,19.74,9.64,9.87,46.42,2.0]\t9.0\n[7.0,116.0,31.0,9.51,15.57,37.42,2.0]\t12.0\n[16.0,77.499,19.5,8.56,10.5,39.74,2.0]\t9.0\n[9.0,113.0,26.74,9.51,13.37,42.26,2.0]\t12.38\n[6.0,113.0,37.82,9.51,15.57,29.88,2.0]\t12.0\n[12.0,108.865,27.58,9.51,13.0,39.47,2.0]\t11.0\n[15.0,108.806,26.0,9.51,13.0,41.85,2.0]\t11.1\n[10.0,91.62700000000001,19.74,9.64,9.87,46.42,2.0]\t9.0\n[14.0,30.276999999999997,6.86,5.93,3.44,44.14,2.0]\t3.73\n[22.0,69.845,15.9,8.03,7.95,43.93,2.0]\t6.96\n[29.0,44.348,12.0,7.54,6.0,36.96,2.0]\t5.2\n[9.0,113.0,26.74,9.51,13.37,42.26,2.0]\t12.38\n[8.0,77.499,19.5,8.56,9.75,39.74,2.0]\t9.0\n[11.0,108.977,26.02,9.51,13.01,41.88,2.0]\t12.0\n[18.0,77.499,19.5,8.56,9.75,39.74,2.0]\t9.0\n[14.0,30.276999999999997,6.88,5.93,3.44,44.01,2.0]\t3.73\n[27.0,12.5,3.94,4.36,0.88,31.73,10.0]\t1.46\n[12.0,50.0,7.0,7.09,3.54,71.43,10.0]\t4.45\n[14.0,33.0,4.9,5.6,2.45,67.35,10.0]\t3.24\n[16.0,19.2,3.2,5.13,1.6,60.0,10.0]\t2.11\n[10.0,46.0,7.0,6.7,1.82,65.71,10.0]\t4.47\n[12.0,138.0,31.14,10.2,15.57,44.32,0.0]\t11.85\n[11.0,90.09,25.01,9.62,10.5,36.02,0.0]\t8.48\n[23.0,48.563,20.2,6.92,8.0,24.04,0.0]\t6.71\n[16.0,74.137,19.5,9.16,9.75,38.02,0.0]\t7.6\n[13.0,138.0,31.14,10.2,15.57,44.32,0.0]\t11.76\n[7.0,158.0,43.7,11.12,18.0,36.16,0.0]\t13.6\n[17.0,74.137,19.5,9.16,9.75,38.02,0.0]\t7.6\n[5.0,160.0,36.34,11.12,18.17,44.03,0.0]\t13.6\n[9.0,90.09,25.01,9.62,10.94,36.02,0.0]\t8.69\n[18.0,70.0,18.0,8.67,9.0,38.89,0.0]\t7.2\n[6.0,158.0,43.7,11.25,18.0,36.16,0.0]\t13.6\n[21.0,73.941,27.44,8.8,11.75,26.95,0.0]\t8.22\n[10.0,138.0,31.14,10.2,15.57,44.32,0.0]\t11.85\n[22.0,73.941,27.44,8.8,11.77,30.94,0.0]\t8.22\n[11.0,138.0,31.14,10.2,15.57,44.32,0.0]\t11.85\n[4.0,220.0,54.0,11.82,27.0,40.74,0.0]\t21.0\n[12.0,90.09,25.01,9.62,10.5,36.02,0.0]\t8.68\n[16.0,78.491,24.35,9.15,10.0,32.23,0.0]\t7.65\n[10.0,90.09,25.01,9.62,10.5,36.02,0.0]\t8.58\n[25.0,73.192,28.52,8.8,11.38,25.66,0.0]\t8.08\n[17.0,70.0,20.76,8.67,9.02,33.72,0.0]\t7.2\n[15.0,78.491,24.35,9.15,10.0,32.23,0.0]\t6.6\n[14.0,138.0,31.14,10.2,15.57,44.32,0.0]\t11.76\n[21.0,10.0,2.08,4.4,1.04,48.08,13.0]\t1.6\n[27.0,10.0,2.08,4.4,1.04,48.08,13.0]\t1.6\n[24.0,10.0,2.08,4.4,1.04,48.08,13.0]\t1.6\n[19.0,16.8,2.96,5.14,1.48,56.76,11.0]\t2.1\n[13.0,25.0,3.82,5.97,1.94,65.45,11.0]\t2.95\n[12.0,25.0,3.88,5.97,1.94,64.43,11.0]\t2.87\n[19.0,16.8,2.96,5.14,1.48,56.76,11.0]\t1.97\n[22.0,3.341,0.66,2.8,0.33,50.62,8.0]\t0.59\n[21.0,19.093,8.0,5.37,4.0,23.87,8.0]\t4.7\n[12.0,42.0,14.8,7.13,7.4,28.38,8.0]\t6.8\n[24.0,40.053000000000004,12.87,5.79,7.76,31.12,8.0]\t7.5\n[22.0,3.341,0.66,2.79,0.33,50.62,8.0]\t0.59\n[14.0,76.8,19.6,8.79,9.67,39.18,8.0]\t12.0\n[25.0,5.35,1.58,4.4,0.74,33.86,14.0]\t0.88\n[27.0,5.35,1.67,4.4,0.74,32.04,14.0]\t0.88\n[23.0,14.745,3.08,6.17,1.56,47.87,14.0]\t1.8\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://172.18.0.10:4040/jobs/job?id\u003d10"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1543324472015_-2088466475",
+      "id": "20181127-131432_157329150",
+      "dateCreated": "2018-11-27 13:14:32.015",
+      "dateStarted": "2018-11-27 13:18:40.165",
+      "dateFinished": "2018-11-27 13:18:40.961",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark.pyspark\nfinal_df \u003d output.select([\u0027features\u0027, \u0027crew\u0027])\ntrain_df, test_df \u003d final_df.randomSplit([0.8, 0.2])",
+      "user": "tienanh",
+      "dateUpdated": "2018-11-27 13:21:44.546",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "jobName": "paragraph_1543324704720_845572227",
+      "id": "20181127-131824_601675035",
+      "dateCreated": "2018-11-27 13:18:24.720",
+      "dateStarted": "2018-11-27 13:21:44.577",
+      "dateFinished": "2018-11-27 13:21:44.683",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark.pyspark\nfrom pyspark.ml.regression import LinearRegression\nship_lr \u003d LinearRegression(labelCol\u003d\u0027crew\u0027)\ntrained_ship_model \u003d ship_lr.fit(train_df)\nship_results \u003d trained_ship_model.evaluate(test_df)\nship_results.rootMeanSquaredError",
+      "user": "tienanh",
+      "dateUpdated": "2018-11-27 13:26:54.794",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "1.0019603711071063\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://172.18.0.10:4040/jobs/job?id\u003d11",
+            "http://172.18.0.10:4040/jobs/job?id\u003d12",
+            "http://172.18.0.10:4040/jobs/job?id\u003d13",
+            "http://172.18.0.10:4040/jobs/job?id\u003d14",
+            "http://172.18.0.10:4040/jobs/job?id\u003d15",
+            "http://172.18.0.10:4040/jobs/job?id\u003d16",
+            "http://172.18.0.10:4040/jobs/job?id\u003d17",
+            "http://172.18.0.10:4040/jobs/job?id\u003d18"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1543324904546_1824479163",
+      "id": "20181127-132144_825988922",
+      "dateCreated": "2018-11-27 13:21:44.546",
+      "dateStarted": "2018-11-27 13:26:54.828",
+      "dateFinished": "2018-11-27 13:26:58.227",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark.pyspark\n",
+      "user": "tienanh",
+      "dateUpdated": "2018-11-27 13:26:54.795",
+      "config": {},
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1543325214794_1737939179",
+      "id": "20181127-132654_488727401",
+      "dateCreated": "2018-11-27 13:26:54.794",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "MLib/Linear_Regression_Consulting_Project",
+  "id": "2DXNSYCS5",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}

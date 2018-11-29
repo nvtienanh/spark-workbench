@@ -1,8 +1,8 @@
-version: "2"
+version: "2.1"
 
 services:
   namenode:
-    image: nvtienanh/hadoop-namenode:2.0.0-hadoop2.7.4-java8
+    image: nvtienanh/hadoop-namenode:1.1.0-hadoop2.8-java8
     volumes:
       - namenode:/hadoop/dfs/name
     environment:
@@ -12,7 +12,7 @@ services:
     ports:
       - "50070:50070"
   datanode:
-    image: nvtienanh/hadoop-datanode:2.0.0-hadoop2.7.4-java8
+    image: nvtienanh/hadoop-datanode:1.1.0-hadoop2.8-java8
     volumes:
       - datanode:/hadoop/dfs/data
     env_file:

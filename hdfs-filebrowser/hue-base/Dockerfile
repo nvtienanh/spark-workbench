@@ -1,8 +1,9 @@
-FROM nvtienanh/hadoop-base:1.1.0-hadoop2.8-java8
+# FROM nvtienanh/hadoop-base:1.1.0-hadoop2.8-java8
+FROM nvtienanh/hive:2.3.2-postgresql-metastore
 MAINTAINER Anh Nguyen <nvtienanh@gmail.com>
 
 RUN apt-get update -y
-RUN apt-get install --fix-missing -q -y \
+RUN apt-get install -y \
   ant \
   gcc \
   g++ \

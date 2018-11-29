@@ -1,0 +1,312 @@
+{
+  "paragraphs": [
+    {
+      "text": "%pyspark\nfrom __future__ import absolute_import\nfrom __future__ import division\nfrom __future__ import print_function\nfrom pyspark.sql import functions as F\nfrom pyspark.sql import types as T\nimport numpy as np\nimport matplotlib.pyplot as pl\nfrom sklearn.impute import SimpleImputer\ndf \u003d spark.read.csv(\u0027hdfs://namenode:8020/user/tienanh/Data.csv\u0027, header\u003dTrue, inferSchema\u003dTrue)\nz.show(df)",
+      "user": "tienanh",
+      "dateUpdated": "2018-11-29 05:46:32.418",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Country": "string",
+                      "Age": "string",
+                      "Salary": "string",
+                      "Purchased": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "stacked": false
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "Country",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "Age",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Country": "string",
+                      "Age": "string",
+                      "Salary": "string",
+                      "Purchased": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "Country\tAge\tSalary\tPurchased\nFrance\t44\t72000\tNo\nSpain\t27\t48000\tYes\nGermany\t30\t54000\tNo\nSpain\t38\t61000\tNo\nGermany\t40\tnull\tYes\nFrance\t35\t58000\tYes\nSpain\tnull\t52000\tNo\nFrance\t48\t79000\tYes\nGermany\t50\t83000\tNo\nFrance\t37\t67000\tYes\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://172.19.0.10:4040/jobs/job?id\u003d52",
+            "http://172.19.0.10:4040/jobs/job?id\u003d53",
+            "http://172.19.0.10:4040/jobs/job?id\u003d54",
+            "http://172.19.0.10:4040/jobs/job?id\u003d55"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1543068643172_-918705640",
+      "id": "20181124-141043_1650397690",
+      "dateCreated": "2018-11-24 14:10:43.172",
+      "dateStarted": "2018-11-29 05:46:32.440",
+      "dateFinished": "2018-11-29 05:46:33.642",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%pyspark\nz.show(df)",
+      "user": "tienanh",
+      "dateUpdated": "2018-11-29 05:47:08.215",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "Country": "string",
+                      "Age": "string",
+                      "Salary": "string",
+                      "Purchased": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "Country\tAge\tSalary\tPurchased\nFrance\t44\t72000\tNo\nSpain\t27\t48000\tYes\nGermany\t30\t54000\tNo\nSpain\t38\t61000\tNo\nGermany\t40\tnull\tYes\nFrance\t35\t58000\tYes\nSpain\tnull\t52000\tNo\nFrance\t48\t79000\tYes\nGermany\t50\t83000\tNo\nFrance\t37\t67000\tYes\n"
+          }
+        ]
+      },
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            "http://172.19.0.10:4040/jobs/job?id\u003d57"
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "apps": [],
+      "jobName": "paragraph_1543069143193_-1711562769",
+      "id": "20181124-141903_484258969",
+      "dateCreated": "2018-11-24 14:19:03.194",
+      "dateStarted": "2018-11-29 05:47:07.623",
+      "dateFinished": "2018-11-29 05:47:07.697",
+      "status": "FINISHED",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark.pyspark\n# Encoding categorical data\nfrom sklearn.preprocessing import LabelEncoder, OneHotEncoder\nlabelencoder_X \u003d LabelEncoder()\nX[:, 0] \u003d labelencoder_X.fit_transform(X[:, 0])\nonehotencoder \u003d OneHotEncoder(categorical_features\u003d0)\nX \u003d onehotencoder.fit_transform(X).toarray()",
+      "user": "tienanh",
+      "dateUpdated": "2018-11-25 04:30:49.984",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "ERROR",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "/opt/conda/lib/python3.7/site-packages/sklearn/preprocessing/_encoders.py:363: FutureWarning: The handling of integer data will change in version 0.22. Currently, the categories are determined based on the range [0, max(values)], while in the future they will be determined based on the unique values.\nIf you want the future behaviour and silence this warning, you can specify \"categories\u003d\u0027auto\u0027\".\nIn case you used a LabelEncoder before this OneHotEncoder to convert the categories to integers, then you can now use the OneHotEncoder directly.\n  warnings.warn(msg, FutureWarning)\n/opt/conda/lib/python3.7/site-packages/sklearn/preprocessing/_encoders.py:385: DeprecationWarning: The \u0027categorical_features\u0027 keyword is deprecated in version 0.20 and will be removed in 0.22. You can use the ColumnTransformer instead.\n  \"use the ColumnTransformer instead.\", DeprecationWarning)\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "Fail to execute line 6: X \u003d onehotencoder.fit_transform(X).toarray()\nTraceback (most recent call last):\n  File \"/tmp/zeppelin_pyspark-1316930907219418189.py\", line 380, in \u003cmodule\u003e\n    exec(code, _zcUserQueryNameSpace)\n  File \"\u003cstdin\u003e\", line 6, in \u003cmodule\u003e\n  File \"/opt/conda/lib/python3.7/site-packages/sklearn/preprocessing/_encoders.py\", line 499, in fit_transform\n    self._categorical_features, copy\u003dTrue)\n  File \"/opt/conda/lib/python3.7/site-packages/sklearn/preprocessing/base.py\", line 54, in _transform_selected\n    if len(selected) \u003d\u003d 0:\nTypeError: object of type \u0027int\u0027 has no len()\n"
+          }
+        ]
+      },
+      "apps": [],
+      "jobName": "paragraph_1543069927566_-1841310734",
+      "id": "20181124-143207_199944269",
+      "dateCreated": "2018-11-24 14:32:07.566",
+      "dateStarted": "2018-11-25 04:30:50.020",
+      "dateFinished": "2018-11-25 04:30:50.098",
+      "status": "ERROR",
+      "progressUpdateIntervalMs": 500
+    },
+    {
+      "text": "%spark.pyspark\nfrom sklearn.preprocessing import ",
+      "user": "tienanh",
+      "dateUpdated": "2018-11-24 16:45:46.816",
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "python",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/python"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "jobName": "paragraph_1543076484290_-675249640",
+      "id": "20181124-162124_2032726491",
+      "dateCreated": "2018-11-24 16:21:24.290",
+      "status": "READY",
+      "progressUpdateIntervalMs": 500
+    }
+  ],
+  "name": "Missing data",
+  "id": "2DWSMAE74",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {
+    "spark:shared_process": []
+  },
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {}
+}
