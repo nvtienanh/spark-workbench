@@ -21,7 +21,7 @@ Hiện tại thì chưa hỗ trợ work to scale up spark-workers, chi tiết c�
 * Namenode: http://localhost:50070
 * Datanode: http://localhost:50075
 * Spark-master: http://localhost:8080
-* Spark-notebook: http://localhost:9001
+* Spark-notebook: http://localhost
 * Hue (HDFS Filebrowser): http://localhost:8088
 
 ## Count Example for Spark Notebooks
